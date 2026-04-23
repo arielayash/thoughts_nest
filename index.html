@@ -6,8 +6,85 @@
     <title>קן המחשבות</title>
     <link rel="icon" href="./icon_trans_small.png">
     <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
 </head>
 <body>
+
+    <div class="app">
+        <header>
+            
+            <h1> <i class="fas fa-brain"></i> קן המחשבות שלי</h1>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <span class="tab active">רעיונות</span>
+                <span class="tab">קשרים</span>
+            </div>
+
+            <div class="main-container">
+
+                <div class="ideas-container">
+                    
+                    <ul id="ideas-list" class="hidden">
+                        <!-- li will be inserted right here from the script -->
+
+                        <!-- <li class="idea-elem">
+                            <span id="idea-title">יומן זוגיות</span>
+                            <span>
+                                <button class="list-btn" id="edit-btn"><i class="fa-regular fa-pen-to-square"></i></button>
+                                <button class="list-btn" id="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                            </span>
+                        </li>                        -->
+
+                    </ul>
+                                        
+                    <div class="empty-ideas">
+                        <i class="fa-solid fa-wand-sparkles"></i>
+                        <p>אין רעיונות כרגע</p>
+                    </div>
+
+                    <div class="new-idea-container hidden">
+                        <h2>כל רעיון מתחיל בניצוץ</h2>
+                        <form id="new-idea-form">
+
+                            <div class="form-group">
+                                <label for="title">שם</label>
+                                <input type="text" id="title" placeholder="תן כותרת לרעיון..." required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">תקציר מנהלים</label>
+                                <input type="text" id="description" placeholder="תאר את הרעיון במשפט" required>
+                            </div>
+
+                            <button type="submit">הוסף</button>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer>
+            <p id="num-items">0 רעיונות</p>  
+            <button id="add-idea">
+                <i class="fas fa-plus"></i>
+               יש לי ניצוץ
+            </button>
+         
+        </footer>
+
+    </div>
     
     <script type="module" src="script.js"></script>
 </body>

@@ -1,3 +1,7 @@
+/************************************/
+/*      General properties          */
+/************************************/
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +9,323 @@
 }
 
 :root {
-    --primary: hsl(199, 100%, 76%);
-    --secondary: #6fd0fd;
+    --primary: hsl(199, 97%, 53%);
+    --primary-light: hsl(199, 100%, 76%);    
+    --dark: #212529;
+    --light: #f8f9fa;
+    --gray: #868e96;
+    --border: #e9ecef;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #f1f3f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--dark);
+    direction: rtl;
+}
+
+/*----------------------------------------------------------------------->*/
+
+.app {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 20px 25px;
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.tabs {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid var(--border);
+    padding: 15px 25px;
+}
+
+.tab {
+    padding: 5px 3px;
+    cursor: pointer;
+    color: var(--gray);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: var(--primary);
+}
+
+.tab.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    font-weight: 600;
+}
+
+/*************************************/
+/*      Ideas Tab                    */
+/*************************************/
+
+/* ---------- Empty Ideas sub-tab ----------*/
+.empty-ideas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    color: var(--gray);
+}
+
+.empty-ideas i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+/* ---------- Ideas list sub-tab ----------*/
+
+.ideas-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;        
+}
+
+#ideas-list {
+    list-style: none;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 10px 10px 15px 10px;
+    flex-grow: 1;   
+    direction: ltr;       
+}
+
+/* Style the scroll bar of the transaction list */
+#ideas-list::-webkit-scrollbar {
+    width: 8px;    
+}
+
+#ideas-list::-webkit-scrollbar-track {
+    /* track is the background of the scroll bar */
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+#ideas-list::-webkit-scrollbar-thumb {
+    /* thumb is the draggble part of the scroll bar */
+    background-color: #cbd5e0;
+    border-radius: 4px;
+}
+
+#ideas-list::-webkit-scrollbar-thumb:hover {
+    background-color: #a0aec0;
+} 
+
+
+/* Add animation when we add a new transaction to the list */
+.idea-elem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    background-color: white;
+    color: var(--gray); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    border-left: 5px solid color-mix(in srgb, var(--primary), transparent 50%);
+    animation: slideIn 0.3 ease;    
+    direction: rtl;  
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.idea-elem:hover {
+    transform: translateX(-4px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+.idea-elem .list-btn {
+    background: none;
+    border: none;    
+    cursor: pointer;
+    font-size: 1.4rem;
+    opacity: 0;
+    transition: all 0.2s ease;
+    padding: 0px 8px;
+    border-radius: 4px;
+    margin-left: 12px;
+}
+
+.idea-elem:hover .list-btn {
+    opacity: 1;
+}
+
+.idea-elem .list-btn:hover {    
+   
+    transform: scale(1.15);
+}
+
+#edit-btn {
+    color: var(--primary);
+}
+
+#edit-btn:hover {
+    background-color: color-mix(in srgb, var(--primary-light), transparent 90%);    
+}
+
+#delete-btn {
+    color: #dc2626;
+}
+
+#delete-btn:hover {
+    background-color: #fee2e2;
+}
+
+
+/* ---------- New Idea form sub-tab ----------*/
+
+.new-idea-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(133, 223, 250, 0.1);
+}
+
+input:hover {
+    border-color: #cbd5e0;
+}
+
+
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    margin-top: auto;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/*---------------------------------------------------------------------------------->*/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    border-top: 1px solid var(--border);
+    background-color: var(--light);
+    font-size: 14px;
+}
+
+footer p {
+    color: var(--gray);
+}
+
+footer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;    
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    color: var(--light);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 15px;
+    box-shadow: 0 4px 8px rgba(43, 88, 118, 0.2);
+    transition: all 0.2s;    
+}
+
+footer button:hover {        
+    opacity: 0.9;
+
+    box-shadow: 0 0 0 3px rgba(66, 211, 255, 0.15);
+    transform: translateY(-2px);         
+}
+
+footer button:active {
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none;
 }
