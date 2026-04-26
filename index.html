@@ -24,15 +24,15 @@
 
         <main>
             <div class="tabs">
-                <span class="tab active">רעיונות</span>
-                <span class="tab">קשרים</span>
+                <span class="tab active" id="ideas-tab">רעיונות</span>
+                <span class="tab" id="connections-tab">קשרים</span>
             </div>
 
             <div class="main-container">
 
                 <div class="ideas-container">
                     
-                    <ul id="ideas-list" class="hidden">
+                    <ul class="ideas-list">
                         <!-- li will be inserted right here from the script -->
 
                         <!-- <li class="idea-elem">
@@ -50,7 +50,7 @@
                         <p>אין רעיונות כרגע</p>
                     </div>
 
-                    <div class="new-idea-container hidden">
+                    <div class="new-idea-container">
                         <h2>כל רעיון מתחיל בניצוץ</h2>
                         <form id="new-idea-form">
 
@@ -64,9 +64,29 @@
                                 <input type="text" id="description" placeholder="תאר את הרעיון במשפט" required>
                             </div>
 
-                            <button type="submit">הוסף</button>
+                            <button class="abort-btn" id="abort-idea-btn">בטל</button>
+                            <button type="submit" id="create-idea-btn">הוסף</button>
 
                         </form>
+                    </div>
+
+                    <div class="edit-idea-container">
+                        
+                        <form id="edit-idea-form">
+                            
+                            <div class="form-group">
+                                <h2 id="idea-title"></h2>
+                                <h3 id="idea-description"></h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="free-text">טקסט חופשי</label>
+                                <textarea id="free-text" name="free-text" rows="10" cols="50" placeholder="הקלד כאן את המחשבות..."></textarea>
+                            </div>
+
+                            <button class="abort-btn" id="abort-edit-btn">בטל</button>
+                            <button type="submit" id="save-edit-btn">שמור</button>
+                        </form>                        
                     </div>
 
                 </div>
