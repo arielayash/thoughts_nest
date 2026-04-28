@@ -190,6 +190,95 @@ document.getElementById("abort-edit-btn").addEventListener(
     }
 );
 
+document.getElementById("menu-btn").addEventListener(
+    "click",
+    (e) => {
+        e.preventDefault();
+
+        const menuElm = document.getElementById("menu-options-container");
+
+        if ( menuElm.classList.contains("hidden") ) {
+            menuElm.classList.remove("hidden");
+        }
+        else {
+            menuElm.classList.add("hidden");
+        }        
+    }
+);
+
+
+async function saveStorageWithPicker() {
+        
+    const blob = new Blob([gIdeaStorage.toJSON()], { type: 'application/json' });
+
+    try {
+        // 1. Show the 'Save As' file browser
+        const handle = await window.showSaveFilePicker({
+        suggestedName: 'ideas.json',
+        types: [{
+            description: 'JSON Files',
+            accept: { 'application/json': ['.json'] },
+        }],
+        });
+
+        // 2. Create a writable stream and save the file
+        const writable = await handle.createWritable();
+        await writable.write(blob);
+        await writable.close();
+    } catch (err) {
+        console.error("Save cancelled or failed:", err);
+    }
+}
+
+
+document.getElementById("export-option").addEventListener(
+    "click",
+    (e) => {
+        e.preventDefault();
+
+        document.getElementById("menu-options-container").classList.add("hidden");
+
+        saveStorageWithPicker();       
+    }
+);
+
+
+async function loadStorageWithPicker() {
+
+    try {
+        // Open file picker dialog
+        const [fileHandle] = await window.showOpenFilePicker({
+            types: [{
+                description: 'JSON Files',
+                accept: { 'application/json': ['.json'] },
+            }],            
+            multiple: false
+        });
+
+        // Get the file object
+        const file = await fileHandle.getFile();
+        const content = await file.text();
+        gIdeaStorage.fromJSON(content);
+
+        openIdeasTab();
+        
+    } catch (err) {
+        console.error("User cancelled or error occurred:", err);
+    }
+}
+
+document.getElementById("import-option").addEventListener(
+    "click",
+    (e) => {
+        e.preventDefault();
+
+        document.getElementById("menu-options-container").classList.add("hidden");
+
+        loadStorageWithPicker();       
+    }
+);
+
+
 window.onload = () => {
 
     gIdeaStorage.forceSync();

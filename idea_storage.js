@@ -63,29 +63,38 @@ export class IdeaStorage {
         this._dumpToStorage();
     }
 
+    toJSON () {
+        return JSON.stringify(this._ideas);
+    }
+
+    fromJSON (jsonText) {
+        
+        let ideasObj = JSON.parse(jsonText);
+        if (ideasObj === null) {
+            console.log("Error while parsing JSON ideas text");                
+            return;
+        }
+        
+        let ideas = {};
+        for (const [ideaId, idea] of Object.entries(ideasObj) ) {                                                                                        
+            ideas[ideaId] = Object.assign(new Idea(), idea);
+        }
+        
+        this._ideas = ideas;
+        if (Object.keys(this._ideas).length > 0){
+            this._nextIdeaId = Math.max(...Object.keys(ideas)) + 1;        
+        }
+    }
+
     _dumpToStorage () {
-        window.localStorage.setItem("ideas", JSON.stringify(this._ideas));
+        window.localStorage.setItem("ideas", this.toJSON());
     }
 
     _loadFromStorage () {
-        let ideas = {};
+        
         let loadedIdeasJSON = window.localStorage.getItem("ideas");            
         if (loadedIdeasJSON != null) {
-                    
-            let ideasObj = JSON.parse(loadedIdeasJSON);
-            if (ideasObj === null) {
-                console.log("Error while parsing stored ideas data");                
-                return;
-            }
-                        
-            for (const [ideaId, idea] of Object.entries(ideasObj) ) {                                                                                        
-                ideas[ideaId] = Object.assign(new Idea(), idea);
-            }
-            
-            this._ideas = ideas;
-            if (Object.keys(this._ideas).length > 0){
-                this._nextIdeaId = Math.max(...Object.keys(ideas)) + 1;        
-            }                
+            this.fromJSON(loadedIdeasJSON);                               
         }
         else {
             console.log("No ideas on local storage were found");

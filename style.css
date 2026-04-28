@@ -31,6 +31,74 @@ body {
 
 /*----------------------------------------------------------------------->*/
 
+
+/*************************************/
+/*      Menu                  */
+/*************************************/
+
+.menu-container button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--primary);
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 15px;
+    transition: all 0.2s;    
+}
+
+.menu-container button:hover {        
+    opacity: 0.8;    
+    transform: translateY(-2px);           
+}
+
+.menu-container button:active {
+    transform: translateY(0);
+}
+
+.menu-options-container {
+    position: absolute;
+    top: 50px;
+    right: 25px;        
+    background-color: var(--light);    
+    border-radius: 8px;    
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease;
+}
+
+.menu-options-list {     
+    display: flex;
+    flex-direction: column;                    
+    justify-content: space-around;
+    list-style: none;            
+    height: 100px;
+    padding: 10px 10px 15px 10px;    
+}
+
+.menu-item {    
+    display: flex;
+    color: var(--gray);
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;    
+    opacity: 1.0;    
+    /* border: 1px solid red; */
+    border-radius: 8px;
+    padding: 5px 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    color: var(--primary-light);
+}
+
+/*----------------------------------------------------------------------->*/
+
+
 .app {
     width: 100%;
     max-width: 500px;
@@ -42,7 +110,7 @@ body {
 
 header {
     background-color: var(--primary);
-    color: white;
+    color: var(--light);
     padding: 20px 25px;
 }
 
