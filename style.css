@@ -353,7 +353,7 @@ button[type="submit"]:active {
 
 .abort-btn {
     width: 100%;
-    padding: 14px;
+    padding: 10px;
     background-color: rgba(0,0,0,0);
     border: none;
     font-size: 1rem;
@@ -427,6 +427,7 @@ textarea:hover {
     padding: 2px 5px;
     animation: slideInTop 1s ease;
     margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 @keyframes slideInTop {
