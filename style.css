@@ -384,8 +384,16 @@ button[type="submit"]:active {
     padding: 24px;
 }
 
+.free-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 textarea {
     width: 100%;
+    max-width: 500px;
     padding: 12px 16px;
     border: 2px solid #e2e8f0;
     border-radius: 8px;
@@ -394,6 +402,7 @@ textarea {
     color: var(--gray);
     transition: all 0.2s ease;
     background-color: white;
+    z-index: 2;
 }
 
 textarea:focus {
@@ -406,8 +415,58 @@ textarea:hover {
     border-color: #cbd5e0;
 }
 
+.edit-tool-bar {
+    display: flex;
+    justify-content: right;
+    background-color: color-mix(in srgb, var(--light), transparent 10%); 
+    box-shadow: 0 4px 4px rgba(43, 88, 118, 0.2);
+    border-radius: 8px;    
+    align-items: center;
+    width: 100%;
+    max-width: 500px;        
+    padding: 2px 5px;
+    animation: slideInTop 1s ease;
+    margin-top: 5px;
+}
 
+@keyframes slideInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes slideOutTop {
+
+    from {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.edit-tool-bar-btn {
+    color: var(--primary);  
+    background-color: rgba(0,0,0,0);  
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-tool-bar-btn:hover {
+    color: var(--primary-light);
+}
 
 /*---------------------------------------------------------------------------------->*/
 
